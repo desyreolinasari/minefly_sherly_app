@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Business - Mineflybox_</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFE8EF 25%, #FFD6E8 50%, #FFE8EF 75%, #FFF5F7 100%);
+            background-attachment: fixed;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(9px, 9px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(9px, -9px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        .policy-hero {
+            margin-top: 70px;
+            padding: 5rem 10%;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .policy-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .policy-hero p {
+            font-size: 1.3rem;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        .policy-content {
+            padding: 5rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .policy-section {
+            background: #FFFFFF;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .policy-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .policy-section h2 {
+            color: #FF1493;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .policy-section h3 {
+            color: #FF69B4;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-section p {
+            color: #333333;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .policy-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-section li {
+            color: #333333;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .policy-section strong {
+            color: #FF1493;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFE8EF 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #FF1493;
+            margin: 1.5rem 0;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                padding: 2rem 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .policy-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .policy-hero p {
+                font-size: 1.1rem;
+            }
+
+            .policy-content {
+                padding: 3rem 5%;
+            }
+
+            .policy-section {
+                padding: 2rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Mineflybox_</div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="linktree.html">Linktree</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="ecommerce.html">E-Commerce</a></li>
+            <li><a href="pembayaran.html">Pembayaran</a></li>
+            <li><a href="promosi.html">Promosi</a></li>
+            <li><a href="polisi.html">Policy Business</a></li>
+            <li><a href="promosi.html">Promosi</a></li>
+            <li><a href="pengaduan.html">Pengaduan</a></li>
+        </ul>
+        </ul>
+    </nav>
+
+    <section class="policy-hero">
+        <h1>📋 Policy Business</h1>
+        <p>Kebijakan Bisnis & Ketentuan Layanan Mineflybox_</p>
+    </section>
+
+    <div class="policy-content">
+        <div class="policy-section">
+            <h2><span class="icon">🛍️</span> Kebijakan Pemesanan</h2>
+            <p>Berikut adalah ketentuan dan prosedur pemesanan di Mineflybox_:</p>
+            
+            <h3>Prosedur Pemesanan</h3>
+            <ul>
+                <li>Pemesanan dapat dilakukan melalui WhatsApp, Instagram, atau media sosial resmi kami</li>
+                <li>Konfirmasi pesanan akan diberikan maksimal 2x24 jam setelah pemesanan</li>
+                <li>Minimal pemesanan adalah <strong>H-3</strong> (3 hari sebelum tanggal pengiriman)</li>
+                <li>Untuk pesanan custom atau dalam jumlah besar, harap hubungi kami minimal <strong>H-7</strong></li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>⚠️ Penting:</strong> Pesanan yang sudah dikonfirmasi tidak dapat dibatalkan setelah proses produksi dimulai.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">💳</span> Kebijakan Pembayaran</h2>
+            
+            <h3>Metode Pembayaran</h3>
+            <p>Kami menerima pembayaran melalui:</p>
+            <ul>
+                <li>Transfer Bank (BCA, BRI, Mandiri, BNI)</li>
+                <li>E-Wallet (GoPay, OVO, Dana, ShopeePay)</li>
+                <li>QRIS (Semua platform e-wallet)</li>
+            </ul>
+
+            <h3>Ketentuan Pembayaran</h3>
+            <ul>
+                <li>Pembayaran dilakukan dengan sistem <strong>DP (Down Payment) 50%</strong> untuk mengkonfirmasi pesanan</li>
+                <li>Pelunasan 50% sisanya dilakukan sebelum pengiriman atau pengambilan</li>
+                <li>Untuk pemesanan di bawah Rp 100.000, pembayaran dilakukan <strong>full payment</strong></li>
+                <li>Bukti transfer harus dikirimkan untuk validasi pesanan</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>📌 Catatan:</strong> Pesanan baru akan diproses setelah pembayaran DP diterima dan divalidasi oleh admin.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">🚚</span> Kebijakan Pengiriman</h2>
+            
+            <h3>Metode Pengiriman</h3>
+            <ul>
+                <li><strong>Self Pick-up:</strong> Gratis, dapat diambil di lokasi kami sesuai jam operasional</li>
+                <li><strong>Delivery Area Padang:</strong> Biaya pengiriman mulai dari Rp 10.000 - Rp 25.000 tergantung lokasi</li>
+                <li><strong>Pengiriman Luar Kota:</strong> Menggunakan ekspedisi (JNE, J&T, SiCepat) - biaya ditanggung pembeli</li>
+            </ul>
+
+            <h3>Ketentuan Pengiriman</h3>
+            <ul>
+                <li>Jadwal pengiriman dapat disesuaikan dengan permintaan (subject to availability)</li>
+                <li>Pengiriman dilakukan setelah pelunasan pembayaran</li>
+                <li>Untuk produk yang mudah rusak (bunga segar), pengiriman dijadwalkan sedekat mungkin dengan acara</li>
+                <li>Kerusakan akibat ekspedisi bukan tanggung jawab Mineflybox_</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">🔄</span> Kebijakan Pengembalian & Penukaran</h2>
+            
+            <h3>Kondisi Pengembalian</h3>
+            <p>Pengembalian atau penukaran produk hanya dapat dilakukan dalam kondisi berikut:</p>
+            <ul>
+                <li>Produk rusak atau cacat saat diterima (dengan bukti foto/video unboxing)</li>
+                <li>Kesalahan produk yang dikirim dari pihak kami</li>
+                <li>Produk tidak sesuai dengan deskripsi atau kesepakatan</li>
+            </ul>
+
+            <h3>Prosedur Pengembalian</h3>
+            <ul>
+                <li>Laporan kerusakan harus disampaikan maksimal <strong>1x24 jam</strong> setelah produk diterima</li>
+                <li>Sertakan foto/video sebagai bukti</li>
+                <li>Produk yang sudah dibuka atau digunakan tidak dapat dikembalikan</li>
+                <li>Pengembalian dana akan diproses maksimal 7 hari kerja</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>❌ Tidak Dapat Dikembalikan:</strong> Produk custom, produk yang sudah dibuka/digunakan, atau pemesanan khusus yang sudah diproses.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">✨</span> Kebijakan Kualitas Produk</h2>
+            
+            <h3>Standar Kualitas</h3>
+            <ul>
+                <li>Semua produk dipilih dan dikemas dengan standar kualitas terbaik</li>
+                <li>Produk makanan/snack memiliki tanggal kadaluarsa minimal 2 bulan</li>
+                <li>Bunga dan tanaman dijamin segar saat pengiriman</li>
+                <li>Kemasan dan packaging dijamin rapih dan aman</li>
+            </ul>
+
+            <h3>Inspeksi & Quality Control</h3>
+            <ul>
+                <li>Setiap produk melalui tahap quality control sebelum dikirim</li>
+                <li>Foto produk akan dikirimkan sebelum pengiriman (untuk pesanan tertentu)</li>
+                <li>Kami berhak mengganti item yang tidak tersedia dengan item setara tanpa mengurangi kualitas</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">🎨</span> Kebijakan Custom Order</h2>
+            
+            <h3>Persyaratan Custom</h3>
+            <ul>
+                <li>Minimal pemesanan custom adalah <strong>H-7</strong> sebelum tanggal pengiriman</li>
+                <li>Desain custom akan dikonsultasikan dan disetujui sebelum produksi</li>
+                <li>Revisi desain maksimal <strong>2 kali</strong></li>
+                <li>Harga custom disesuaikan dengan tingkat kesulitan dan bahan yang digunakan</li>
+            </ul>
+
+            <h3>Proses Custom Order</h3>
+            <ul>
+                <li>Konsultasi desain dan tema yang diinginkan</li>
+                <li>Kami akan memberikan estimasi harga dan waktu pengerjaan</li>
+                <li>Setelah approve, pembayaran DP 50% untuk memulai produksi</li>
+                <li>Mockup atau foto progress akan dikirimkan untuk approval</li>
+                <li>Pelunasan sebelum pengiriman</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">🤝</span> Kebijakan Kemitraan & Reseller</h2>
+            
+            <h3>Program Reseller</h3>
+            <ul>
+                <li>Minimal pembelian untuk reseller: <strong>5 box per transaksi</strong></li>
+                <li>Diskon khusus reseller: <strong>10-15%</strong> tergantung volume</li>
+                <li>Sistem konsinyasi tersedia dengan syarat dan ketentuan berlaku</li>
+                <li>Dukungan marketing material (foto produk, katalog digital)</li>
+            </ul>
+
+            <h3>Cara Menjadi Mitra</h3>
+            <ul>
+                <li>Hubungi admin untuk konsultasi program kemitraan</li>
+                <li>Isi formulir pendaftaran mitra</li>
+                <li>Setujui syarat dan ketentuan kemitraan</li>
+                <li>Mulai berbisnis dengan dukungan penuh dari Mineflybox_</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">🔒</span> Kebijakan Privasi</h2>
+            
+            <h3>Perlindungan Data Pelanggan</h3>
+            <ul>
+                <li>Data pribadi pelanggan dijaga kerahasiaannya</li>
+                <li>Informasi hanya digunakan untuk keperluan transaksi dan komunikasi</li>
+                <li>Data tidak akan dibagikan kepada pihak ketiga tanpa izin</li>
+                <li>Riwayat transaksi disimpan untuk keperluan layanan pelanggan</li>
+            </ul>
+
+            <h3>Keamanan Transaksi</h3>
+            <ul>
+                <li>Semua transaksi dilakukan melalui jalur resmi yang aman</li>
+                <li>Bukti pembayaran dan transfer dijamin kerahasiaannya</li>
+                <li>Kami tidak pernah meminta password atau PIN pribadi</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="icon">📞</span> Ketentuan Umum</h2>
+            
+            <ul>
+                <li>Mineflybox_ berhak mengubah kebijakan sewaktu-waktu dengan pemberitahuan terlebih dahulu</li>
+                <li>Untuk komplain atau pertanyaan, hubungi customer service kami di jam operasional</li>
+                <li>Semua perselisihan akan diselesaikan secara kekeluargaan atau melalui jalur hukum yang berlaku</li>
+                <li>Dengan melakukan pemesanan, pelanggan dianggap menyetujui semua kebijakan yang berlaku</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>📱 Butuh Bantuan?</strong> Hubungi kami melalui WhatsApp di <strong>0831-1546-1010</strong> atau DM Instagram <strong>@mineflybox_</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>🎁 Mineflybox_</h3>
+        <p>Colorful Giftbox - Hadiah Penuh Warna & Kebahagiaan!</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2024 Mineflybox_. All Rights Reserved 💖</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        const menuLinks = document.querySelectorAll('.nav-links a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
